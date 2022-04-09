@@ -119,12 +119,24 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Graphic\Textures.cs" />
+    <Compile Include="Core\IField.cs" />
+    <Compile Include="Core\SpaceDirection.cs" />
+    <Compile Include="Graphic\AbstractAnimatedObject.cs" />
+    <Compile Include="Graphic\Background\AbstractBackground.cs" />
+    <Compile Include="Graphic\Background\IBackground.cs" />
+    <Compile Include="Graphic\Background\Strategy\IBackgroundStrategy.cs" />
+    <Compile Include="Graphic\Background\Strategy\RandomMovement.cs" />
+    <Compile Include="Graphic\IAnimatedObject.cs" />
+    <Compile Include="Graphic\IDrawable.cs" />
+    <Compile Include="Graphic\IPlacedInSpace.cs" />
+    <Compile Include="Graphic\TextureLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\BackgroundTask.cs" />
     <Compile Include="Support\Log.cs" />
+    <Compile Include="Support\PupupDialog.cs" />
     <Compile Include="Support\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +159,7 @@
     <Content Include="Assets\Crops\cauliflower\cauliflower_5.png" />
     <Content Include="Assets\Crops\cauliflower\cauliflower_6.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Music\Di Young - Pixel Pig.mp3" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
@@ -175,6 +188,7 @@
       <Version>1.26.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

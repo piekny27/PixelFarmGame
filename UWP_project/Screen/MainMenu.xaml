@@ -34,13 +34,17 @@
               Margin="0"
               Grid.ColumnSpan="3"
               Grid.RowSpan="3"
-              Background="SandyBrown"
-              Visibility="Collapsed">
-            <StackPanel Grid.Row="1" Grid.Column="1">
+              Background="#0078d7"
+              Visibility="Visible">
+            <StackPanel Grid.Row="1" 
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0,500,0,0">
                 <ProgressBar x:Name="loadingProgressBar"
 								 Width="296"
 								 Height="16"
-                                 Margin="0,350,0,0"
+                                 
 								 HorizontalAlignment="Center"
 								 Background="LightGray"
 								 BorderThickness="0,1"
@@ -57,9 +61,13 @@
         </Grid>
         <!-- Menu -->
         <Grid Name="MainMenuGrid"
+              Visibility="Collapsed"
               Grid.Column="1"
-              Grid.Row="1"
-              Background="DarkKhaki">
+              Grid.Row="1">
+            
+            <Grid.Background>
+                <SolidColorBrush Color="#a49d49" Opacity="0.8"/>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="*"/>
@@ -191,9 +199,15 @@
                           Height="500"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center">
-                <Pivot Background="LightGray">
+                <Pivot>
+                    <Pivot.Background>
+                        <SolidColorBrush Color="DarkKhaki" Opacity="0.8"/>
+                    </Pivot.Background>
                     <!-- graphic -->
-                    <PivotItem Background="DarkKhaki">
+                    <PivotItem>
+                        <PivotItem.Background>
+                            <SolidColorBrush Color="#a49d49" Opacity="0.8"/>
+                        </PivotItem.Background>
                         <PivotItem.Header>
                             <TextBlock Text="Graphic" 
                                        Foreground="Black"/>
@@ -234,7 +248,10 @@
                         </StackPanel>
                     </PivotItem>
                     <!-- sound -->
-                    <PivotItem Background="DarkKhaki">
+                    <PivotItem>
+                        <PivotItem.Background>
+                            <SolidColorBrush Color="#a49d49" Opacity="0.8"/>
+                        </PivotItem.Background>
                         <PivotItem.Header>
                             <TextBlock Text="Sound" 
                                        Foreground="Black"/>
@@ -251,15 +268,56 @@
 
                     </PivotItem>
                     <!-- debugging -->
-                    <PivotItem Background="DarkKhaki">
+                    <PivotItem>
+                        <PivotItem.Background>
+                            <SolidColorBrush Color="#a49d49" Opacity="0.8"/>
+                        </PivotItem.Background>
                         <PivotItem.Header>
                             <TextBlock Text="Debugging" 
                                        Foreground="Black"/>
                         </PivotItem.Header>
-
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Top">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Top">
+                                <TextBlock Text="Debug mode" 
+                                       Margin="10,10,10,0"
+                                       Foreground="Black"
+                                       FontSize="20"/>
+                                <CheckBox x:Name="MainMenuDebugMode"
+                                          Margin="0,8,0,0"
+                                          Click="MainMenuDebugMode_Click"
+                                          Foreground="Black"/>
+                            </StackPanel>
+                            <Button Name="MainManuDebugBrowseLogsButton" 
+                                    Margin="10,10,0,0"
+                                    Content="Browse logs"
+                                    BorderThickness="2"
+                                    FontSize="20"
+                                    Width="150"
+                                    BorderBrush="WhiteSmoke"
+                                    Foreground="WhiteSmoke"
+                                    Click="MainManuDebugBrowseLogsButton_Click"
+                                    Style="{StaticResource AccentButtonStyle}"
+                                    Background="DarkGoldenrod"/>
+                            <Button Name="MainManuDebugRemoveTasksButton" 
+                                    Margin="10,10,0,0"
+                                    Content="Remove tasks"
+                                    BorderThickness="2"
+                                    FontSize="20"
+                                    Width="150"
+                                    BorderBrush="WhiteSmoke"
+                                    Foreground="WhiteSmoke"
+                                    Click="MainManuDebugRemoveTasksButton_Click"
+                                    Style="{StaticResource AccentButtonStyle}"
+                                    Background="DarkGoldenrod"/>
+                        </StackPanel>
                     </PivotItem>
                     <!-- about -->
-                    <PivotItem Background="DarkKhaki">
+                    <PivotItem>
+                        <PivotItem.Background>
+                            <SolidColorBrush Color="#a49d49" Opacity="0.8"/>
+                        </PivotItem.Background>
                         <PivotItem.Header>
                             <TextBlock Text="About" 
                                        Foreground="Black"/>
@@ -290,7 +348,7 @@
               Grid.ColumnSpan="3">
             <ScrollViewer Width="800"
                           Height="500"
-                          Background="DarkKhaki"
+                          Background="#a49d49"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical"

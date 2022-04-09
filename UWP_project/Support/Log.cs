@@ -13,7 +13,6 @@ namespace UWP_project.Support
         static object logLock = new object();
         static Log log = null;
         private ILogger MetroLogger;
-        public bool ErrorReceived;
         LinkedList<string> Queue = new LinkedList<string> ();
 
         public Log()

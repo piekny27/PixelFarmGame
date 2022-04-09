@@ -17,6 +17,7 @@
     <DisplayName>UWP_project</DisplayName>
     <PublisherDisplayName>mateusz</PublisherDisplayName>
 	  <!--<Logo>Assets\StoreLogo.png</Logo> -->
+    <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
