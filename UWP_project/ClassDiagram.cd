@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UWP_project.Core.SpaceDirection">
+    <Position X="7.5" Y="0.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="UWP_project.Core.SpaceDirection.HorizontalDirection">
+        <TypeIdentifier>
+          <NewMemberFileName>Core\SpaceDirection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="UWP_project.Core.SpaceDirection.VerticalDirection">
+        <TypeIdentifier>
+          <NewMemberFileName>Core\SpaceDirection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAEAAAAABAJAAABAAAEAAAIIAAQAAAAAAAEAAgEAAAA=</HashCode>
+      <FileName>Core\SpaceDirection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UWP_project.Graphic.AbstractAnimatedObject">
+    <Position X="1" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAJEQAAgAgiAAAAEAAAAAAAAAAAAAgAAAAYAE=</HashCode>
+      <FileName>Graphic\AbstractAnimatedObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UWP_project.Graphic.TextureLoader">
+    <Position X="22" Y="6.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="UWP_project.Graphic.TextureLoader.IncreaseLoadedPercentageDelegate">
+        <TypeIdentifier>
+          <NewMemberFileName>Graphic\TextureLoader.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="UWP_project.Graphic.TextureLoader.OnCreateResourcesAsyncFinished">
+        <TypeIdentifier>
+          <NewMemberFileName>Graphic\TextureLoader.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAQAQAAEAAAAAACIAfAAQQgAAEAAEAQAAAAAAAAAA=</HashCode>
+      <FileName>Graphic\TextureLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UWP_project.Core.Graphic.Background.Strategy.RandomMovement">
+    <Position X="14" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAgADAAAAAAAAAAAAAABAAkAAAAAAY=</HashCode>
+      <FileName>Graphic\Background\Strategy\RandomMovement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UWP_project.Core.Graphic.Background.AbstractBackground">
+    <Position X="4.25" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAgAAAAAAABAIAAAAAAAAIAAAAAgAA=</HashCode>
+      <FileName>Graphic\Background\AbstractBackground.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UWP_project.Screen.MainMenu">
+    <Position X="25.5" Y="4.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="UWP_project.Screen.MainMenu.MainMenuBackground">
+        <TypeIdentifier>
+          <NewMemberFileName>Screen\MainMenu.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAREEEAIBQgQBAgAkgAUISAgARAAAgAAQAECAAAgI=</HashCode>
+      <FileName>Screen\MainMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UWP_project.Services.BackgroundTask">
+    <Position X="10.25" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAASAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Services\BackgroundTask.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.631" />
+  </Class>
+  <Class Name="UWP_project.Services.BackgroundTaskStatus">
+    <Position X="17" Y="2.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="UWP_project.Services.BackgroundTaskStatus.Printer">
+        <TypeIdentifier>
+          <NewMemberFileName>Services\BackgroundTask.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAQAAAAEAAAAAAAAAAAACAYAA=</HashCode>
+      <FileName>Services\BackgroundTask.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UWP_project.Support.Log">
+    <Position X="1.5" Y="11.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAACACAAASAAAAAAAQAAAAAAABQI=</HashCode>
+      <FileName>Support\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UWP_project.Support.PopupDialog">
+    <Position X="6.25" Y="11.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="UWP_project.Support.PopupDialog.PopupDialogActionDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Support\PupupDialog.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Support\PupupDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UWP_project.Support.Utility">
+    <Position X="3.75" Y="11.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACEIAkAAAQAAAAAAAIBAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Support\Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="UWP_project.Core.IField">
+    <Position X="20.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\IField.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UWP_project.Graphic.IAnimatedObject">
+    <Position X="2" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAgAAAAAAE=</HashCode>
+      <FileName>Graphic\IAnimatedObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UWP_project.Graphic.IDrawable">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graphic\IDrawable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UWP_project.Graphic.IPlacedInSpace">
+    <Position X="3.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Graphic\IPlacedInSpace.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UWP_project.Core.Graphic.Background.Strategy.IBackgroundStrategy">
+    <Position X="14" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Graphic\Background\Strategy\IBackgroundStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UWP_project.Core.Graphic.Background.IBackground">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Graphic\Background\IBackground.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
