@@ -365,7 +365,7 @@ namespace UWP_project.Screen
 
             public MainMenuBackground(IField field) : base(field)
             {
-                Speed = 4;
+                Speed = 2;
                 Animation = background[0];
                 IBackgroundStrategy backgroundStrategy = new RandomMovement(this, field);
                 AddStrategy(backgroundStrategy);

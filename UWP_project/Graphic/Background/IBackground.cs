@@ -13,5 +13,5 @@ namespace UWP_project.Core.Graphic.Background
 	{
 		void AddStrategy(IBackgroundStrategy strategy);
 		float Speed { get; set; }
-	}
+    }
 }

@@ -129,6 +129,11 @@
     <Compile Include="Graphic\IAnimatedObject.cs" />
     <Compile Include="Graphic\IDrawable.cs" />
     <Compile Include="Graphic\IPlacedInSpace.cs" />
+    <Compile Include="Graphic\SceneObject\AbstractSceneObject.cs" />
+    <Compile Include="Graphic\SceneObject\IActor.cs" />
+    <Compile Include="Graphic\SceneObject\ISceneObject.cs" />
+    <Compile Include="Graphic\SceneObject\Strategy\Follower.cs" />
+    <Compile Include="Graphic\SceneObject\Strategy\ISceneObjectStrategy.cs" />
     <Compile Include="Graphic\TextureLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen\MainMenu.xaml.cs">

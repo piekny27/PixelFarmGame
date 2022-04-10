@@ -12,7 +12,7 @@ namespace UWP_project.Graphic
 {
 	public abstract class AbstractAnimatedObject : IAnimatedObject
 	{
-		private const int DEFAULT_ANIMATION_SPEED = 1;
+		private const int DEFAULT_ANIMATION_SPEED = 15; //frame rate 60fps
 		private int FrameIndex = 0;
 		private int animationSpeed;
 		private string[] textures = null;
