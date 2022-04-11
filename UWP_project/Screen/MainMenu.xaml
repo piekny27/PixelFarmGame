@@ -146,6 +146,7 @@
                         Width="300"
                         BorderBrush="WhiteSmoke"
                         Foreground="WhiteSmoke"
+                        FontFamily="ms-appx:///Assets/Alagard.ttf#Alagard"
                         Background="Brown"
                         Click="MainManuContinueButton_Click"
                         Style="{StaticResource AccentButtonStyle}"
@@ -159,6 +160,7 @@
                         Width="300"
                         BorderBrush="WhiteSmoke"
                         Foreground="WhiteSmoke"
+                        FontFamily="ms-appx:///Assets/Alagard.ttf#Alagard"
                         Click="MainManuNewGameButton_Click"
                         Style="{StaticResource AccentButtonStyle}"
                         Background="Brown"/>
@@ -171,6 +173,7 @@
                         Width="300"
                         BorderBrush="WhiteSmoke"
                         Foreground="WhiteSmoke"
+                        FontFamily="ms-appx:///Assets/Alagard.ttf#Alagard"
                         Click="MainManuSettingsButton_Click"
                         Style="{StaticResource AccentButtonStyle}"
                         Background="Brown"/>
@@ -183,6 +186,7 @@
                         Width="300"
                         BorderBrush="WhiteSmoke"
                         Foreground="WhiteSmoke"
+                        FontFamily="ms-appx:///Assets/Alagard.ttf#Alagard"
                         Click="MainManuExitButton_Click"
                         Style="{StaticResource AccentButtonStyle}"
                         Background="Brown"/>
@@ -263,6 +267,9 @@
 									   Text="Sound Volume" />
                             <Slider x:Name="MainMenuSoundVolume"
 									Width="300"
+                                    Minimum="0"
+                                    Maximum="1"
+                                    StepFrequency="0.01"
 									Margin="20,15,0,0"/>
                         </StackPanel>
 

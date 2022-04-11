@@ -136,6 +136,9 @@
     <Compile Include="Graphic\SceneObject\Strategy\ISceneObjectStrategy.cs" />
     <Compile Include="Graphic\TextureLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screen\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screen\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,7 @@
     <Content Include="Assets\Crops\cauliflower\cauliflower_6.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Music\Di Young - Pixel Pig.mp3" />
+    <Content Include="Assets\Music\Farming - Don%27t Starve Together - 8-Bit Cover.mp3" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Screen\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Screen\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +202,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Fonts\alagard.ttf" />
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

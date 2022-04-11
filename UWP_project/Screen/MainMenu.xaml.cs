@@ -93,6 +93,7 @@ namespace UWP_project.Screen
         void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             Log.info(this, "Page is being unloaded - removing associations");
+            Music.Dispose();
             canvas.RemoveFromVisualTree();
             canvas = null;
             Log.info(this, "Page was fully unloaded");
@@ -120,7 +121,11 @@ namespace UWP_project.Screen
 
         private void MainManuNewGameButton_Click(object sender, RoutedEventArgs e)
         {
+            Log.info(this, "User clicked new game button");
 
+            if (!FieldLoaded) return;
+
+            Frame.Navigate(typeof(GamePage));
         }
 
         private void MainManuSettingsButton_Click(object sender, RoutedEventArgs e)
@@ -280,7 +285,7 @@ namespace UWP_project.Screen
         {
             if (Music != null)
             {
-                Music.Volume = MainMenuSoundVolume.Value/100.0;
+                Music.Volume = MainMenuSoundVolume.Value;
             }
         }
         void LoadScreenRes()
