@@ -119,8 +119,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\IField.cs" />
-    <Compile Include="Core\SpaceDirection.cs" />
+    <Compile Include="Core\Game\IField.cs" />
+    <Compile Include="Core\Game\SpaceDirection.cs" />
+    <Compile Include="Core\Player\Player.cs" />
+    <Compile Include="Core\Player\Save.cs" />
     <Compile Include="Graphic\AbstractAnimatedObject.cs" />
     <Compile Include="Graphic\Background\AbstractBackground.cs" />
     <Compile Include="Graphic\Background\IBackground.cs" />
@@ -143,6 +145,7 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\BackgroundTask.cs" />
+    <Compile Include="Services\JSON.cs" />
     <Compile Include="Support\Log.cs" />
     <Compile Include="Support\PupupDialog.cs" />
     <Compile Include="Support\Utility.cs" />
@@ -196,6 +199,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.13</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Win2D.uwp">
       <Version>1.26.0</Version>

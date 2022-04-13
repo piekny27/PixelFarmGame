@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.Media.Playback;
 using Windows.Media.Core;
+using Windows.Storage;
 
 namespace UWP_project.Support
 {
     public static class Utility
     {
         private static Random Random = new Random();
-        public static Windows.Storage.ApplicationDataContainer LocalSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-        public static Windows.Storage.StorageFolder LocalFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+        public static ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
+        public static StorageFolder LocalFolder = ApplicationData.Current.LocalFolder;
 
         public static void SaveSettings<T>(string name, T value)
         {
@@ -45,18 +46,18 @@ namespace UWP_project.Support
             }
         }
 
-        public async static Task<MediaPlayer> GetMusic(string additionalPath, string mp3)
+        private async static Task<MediaPlayer> GetMusic(string additionalPath, string name)
         {
             //Initializing Audio
-            Windows.Storage.StorageFolder folder;
-            Windows.Storage.StorageFile musicFile;
+            StorageFolder folder;
+            StorageFile musicFile;
             string path = @"Assets\Music";
             if (additionalPath != null)
             {
                 path += @"\" + additionalPath;
             }
             folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(path);
-            musicFile = await folder.GetFileAsync(mp3 + ".mp3");
+            musicFile = await folder.GetFileAsync(name + ".mp3");
             MediaPlayer music = new MediaPlayer();
             music.Source = MediaSource.CreateFromStorageFile(musicFile);
             

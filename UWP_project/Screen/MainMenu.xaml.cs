@@ -20,6 +20,7 @@ using UWP_project.Core;
 using UWP_project.Core.Graphic.Background;
 using UWP_project.Core.Graphic.Background.Strategy;
 using UWP_project.Services;
+using UWP_project.Core.Player;
 using System.Threading.Tasks;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.Graphics.Canvas.UI;
@@ -86,6 +87,7 @@ namespace UWP_project.Screen
             fieldLoaded = false;
             LoadScreenRes();
             LoadSoundVolume();
+            LoadPlayers();
             LoadDebugSetting();
             Log.info(this, "Constructor initialized");
         }
@@ -101,17 +103,105 @@ namespace UWP_project.Screen
 
         private void MainMenuPlayerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var player = MainMenuPlayerComboBox.SelectedItem as Player;
 
+            if(player == null)
+            {
+                Utility.SaveSettings<int?>("selectedPlayer", null);
+                MainManuNewGameButton.Style = (Style)Resources["ButtonDisabled"];
+                MainManuContinueButton.Visibility = Visibility.Collapsed;
+                Log.info(this, "Deleted player selection choice");
+            }
+            else
+            {
+                Utility.SaveSettings<int?>("selectedPlayer", player.Id);
+                MainManuContinueButton.Visibility = Visibility.Visible;
+                MainManuNewGameButton.Style = (Style)Resources["ButtonEnabled"];
+                Log.info(this, "Saved player selection choice");
+            }
         }
 
-        private void MainManuCreateButton_Click(object sender, RoutedEventArgs e)
+        private void MainMenuCreateButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Log.info(this, "User clicked create button");
+            MainMenuPlayerNameTextBox.Text = "";
+            MainMenuErrorTextBlock.Text = "";
+            MainMenuGrid.Visibility = Visibility.Collapsed;
+            MainMenuCreatePlayerGrid.Visibility = Visibility.Visible;
         }
 
-        private void MainManuDeleteButton_Click(object sender, RoutedEventArgs e)
+        private async void MainManuDeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            Log.info(this, "User clicked delete player button");
 
+            var player = MainMenuPlayerComboBox.SelectedItem as Player;
+
+            if( player != null)
+            {
+                await PopupDialog.ShowPopupDialog
+                    ("Do you really want to delete player " + player.Name + "?",
+                    "Yes",
+                    async () =>
+                    {
+                        JSON.Instance.Players.Remove(player);
+                        await JSON.Instance.Save();
+                        LoadPlayers();
+                        Log.info(this, "Player " + player.Name + " deleted by user");
+                    },
+                    "No",
+                    null);
+                
+            }
+            else
+            {
+                Log.info(this, "Selected player is null");
+            }
+        }
+
+        private void MainMenuCloseCreatePlayerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Log.info(this, "User clicked close create player button");
+            MainMenuGrid.Visibility = Visibility.Visible;
+            MainMenuCreatePlayerGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private async void MainMenuCreatePlayerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Log.info(this, "User clicked create player button");
+
+            string playerName = MainMenuPlayerNameTextBox.Text;
+
+            if(playerName.Length < 4)
+            {
+                MainMenuErrorTextBlock.Text = "Player name is too short.";
+            }
+            else
+            {
+                Player player = new Player() { Name = playerName };
+                var db = JSON.Instance;
+                var players = db.Players;
+                if (players == null)
+                {
+                    Log.err(this, "Players from JSON returned null");
+                    return;
+                }
+                if(players.Exists(p => p.Name == playerName))
+                {
+                    MainMenuErrorTextBlock.Text = "Player " + playerName + "is already used.";
+                    return;
+                }
+                player.Id = player.Name.GetHashCode();
+                players.Add(player);
+                await db.Save();
+
+                Utility.SaveSettings<int?>("selectedPlayer", player.Id);
+
+                Log.info(this, "Player " + player.Name + " added");
+
+                LoadPlayers();
+                MainMenuGrid.Visibility = Visibility.Visible;
+                MainMenuCreatePlayerGrid.Visibility = Visibility.Collapsed;
+            }      
         }
 
         private void MainManuContinueButton_Click(object sender, RoutedEventArgs e)
@@ -164,15 +254,7 @@ namespace UWP_project.Screen
             LoadScreenRes();
         }
 
-        private void MainManuCloseCreatePlayerButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
-        private void MainManuCreatePlayerButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         private async void MainManuDebugBrowseLogsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -249,7 +331,7 @@ namespace UWP_project.Screen
                 sender,
                 (increasePercentage) => { loadingProgressBar.Value += increasePercentage; },
                 null,
-                MainMenuBackground.background
+                new string[][] { TextureLoader.BG_GRASS }
             );
 
             Log.info(this, "Music loading");
@@ -343,6 +425,39 @@ namespace UWP_project.Screen
             MainMenuDebugMode.Click += MainMenuDebugMode_Click;
         }
 
+        private async void LoadPlayers()
+        {
+            await JSON.Instance.Load();
+
+            if (JSON.Instance.Players == null)
+            {
+                Log.err(this, "Players in database returned null");
+                return;
+            }
+
+            MainMenuPlayerComboBox.ItemsSource = JSON.Instance.Players;
+
+            int? selectedPlayerId = Utility.LoadSettings<int?>("selectedPlayer");
+
+            if(selectedPlayerId == null)
+            {
+                Log.info(this, "There are no saved selected player ID");
+            }
+            else
+            {
+                foreach(var player in JSON.Instance.Players)
+                {
+                    if(player.Id == selectedPlayerId)
+                    {
+                        MainMenuPlayerComboBox.SelectedItem = player;
+                        Log.info(this, "Restored player selection choice to " + player.Name);
+                        break;
+                    }
+                }
+            }
+            Log.info(this, "Players loaded");
+        }
+
         private void Page_SizeChanged(object sender, object e)
         {
             double h = ((Frame)Window.Current.Content).ActualHeight;
@@ -362,16 +477,10 @@ namespace UWP_project.Screen
 
         public class MainMenuBackground : AbstractBackground
         {
-
-            public static readonly string[][] background = new string[][]
-            {
-                TextureLoader.BG_GRASS
-            };
-
             public MainMenuBackground(IField field) : base(field)
             {
                 Speed = 2;
-                Animation = background[0];
+                Animation = TextureLoader.BG_GRASS;
                 IBackgroundStrategy backgroundStrategy = new RandomMovement(this, field);
                 AddStrategy(backgroundStrategy);
             }
