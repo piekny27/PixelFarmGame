@@ -104,8 +104,7 @@ namespace UWP_project.Screen
         private void MainMenuPlayerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var player = MainMenuPlayerComboBox.SelectedItem as Player;
-
-            if(player == null)
+            if (player == null)
             {
                 Utility.SaveSettings<int?>("selectedPlayer", null);
                 MainManuNewGameButton.Style = (Style)Resources["ButtonDisabled"];
@@ -117,9 +116,11 @@ namespace UWP_project.Screen
                 Utility.SaveSettings<int?>("selectedPlayer", player.Id);
                 MainManuContinueButton.Visibility = Visibility.Visible;
                 MainManuNewGameButton.Style = (Style)Resources["ButtonEnabled"];
-                Log.info(this, "Saved player selection choice");
+                Log.info(this, "Saved player selection choice: " + player.Name);
             }
         }
+
+        
 
         private void MainMenuCreateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -144,8 +145,9 @@ namespace UWP_project.Screen
                     async () =>
                     {
                         JSON.Instance.Players.Remove(player);
+                        MainMenuPlayerComboBox.ItemsSource = JSON.Instance.Players.ToList();
+                        MainMenuPlayerComboBox.SelectedItem = JSON.Instance.Players.FirstOrDefault();
                         await JSON.Instance.Save();
-                        LoadPlayers();
                         Log.info(this, "Player " + player.Name + " deleted by user");
                     },
                     "No",
@@ -178,27 +180,24 @@ namespace UWP_project.Screen
             else
             {
                 Player player = new Player() { Name = playerName };
-                var db = JSON.Instance;
-                var players = db.Players;
-                if (players == null)
+
+                if (JSON.Instance.Players == null)
                 {
                     Log.err(this, "Players from JSON returned null");
                     return;
                 }
-                if(players.Exists(p => p.Name == playerName))
+                if(JSON.Instance.Players.Exists(p => p.Name == playerName))
                 {
                     MainMenuErrorTextBlock.Text = "Player " + playerName + "is already used.";
                     return;
                 }
-                player.Id = player.Name.GetHashCode();
-                players.Add(player);
-                await db.Save();
-
-                Utility.SaveSettings<int?>("selectedPlayer", player.Id);
-
+                player.Id = Math.Abs(player.Name.GetHashCode());
+                JSON.Instance.Players.Add(player);
+                await JSON.Instance.Save();
+                MainMenuPlayerComboBox.ItemsSource = JSON.Instance.Players.ToList();
+                MainMenuPlayerComboBox.SelectedItem = player;
                 Log.info(this, "Player " + player.Name + " added");
 
-                LoadPlayers();
                 MainMenuGrid.Visibility = Visibility.Visible;
                 MainMenuCreatePlayerGrid.Visibility = Visibility.Collapsed;
             }      
